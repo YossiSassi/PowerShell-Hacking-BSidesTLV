@@ -170,3 +170,6 @@ Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\EventLog\ProtectedEv
 # run some code, then look again @ the event log
 Get-WinEvent -FilterHashtable @{logname='Microsoft-Windows-PowerShell/Operational'} -MaxEvents 10
 Get-WinEvent -FilterHashtable @{logname='Microsoft-Windows-PowerShell/Operational'} -MaxEvents 1 | select -expandProperty message
+
+# 10. Invisi-shell - bypass Powershell defenses - logging, auditing, AMSI
+https://github.com/YossiSassi/Invisi-Shell
