@@ -1,6 +1,7 @@
 # PowerShell-Hacking-BSidesTLV
 Code from my talk @ BSidesTLV 2019 on June 24th on PowerShell as a Hacking Tool
 
+Talk video: https://www.youtube.com/watch?v=Bg_Iy6gpq30
 Slides: https://www.slideshare.net/yossis1/powershellhackingy1nth35h311bsidestlv2019
 
 Links to other scripts & references:
